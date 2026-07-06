@@ -1,0 +1,6 @@
+{
+  "name": "الورشة المتنقلة بالرياض",
+  "description": "ورشة سيارات متنقلة متكاملة في الرياض لتقديم خدمات فحص الكمبيوتر، إصلاح الميكانيكا والكهرباء، تغيير البطاريات، والسمكرة السريعة مع زر اتصال وواتساب مباشر.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

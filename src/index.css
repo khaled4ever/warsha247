@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Cairo", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  
+  --color-brand-primary: #f97316; /* Orange 500 */
+  --color-brand-secondary: #0f172a; /* Slate 900 */
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+}
+
+body {
+  background-color: #f8fafc; /* Slate 50 as requested by Professional Polish */
+  color: #0f172a; /* Slate 900 text */
+  overflow-x: hidden;
+}
+
+/* Smooth transitions for interactive elements */
+.transition-all-300 {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
