@@ -25,16 +25,16 @@ export default function Hero() {
   };
 
   return (
-    <section id="hero" className="relative min-h-[90vh] flex items-center justify-center py-20 px-4 overflow-hidden" dir="rtl">
-      {/* Background Image with Dark Overlays */}
+    <section id="hero" className="relative min-h-[90vh] flex items-center justify-center py-12 md:py-20 px-4 overflow-hidden bg-slate-950" dir="rtl">
+      {/* Background Image with Dark Overlays - using object-contain on mobile to keep it within bounds */}
       <div className="absolute inset-0 z-0">
         <img
           src="https://i.postimg.cc/9QFcwzyQ/wrsht-mtnqlt-lsyant-alsyarat-balryad.png"
           alt="ورشة متنقلة في الرياض"
-          className="w-full h-full object-cover object-center"
+          className="w-full h-full object-contain md:object-cover object-center opacity-20 md:opacity-100"
           referrerPolicy="no-referrer"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/90 via-slate-950/80 to-slate-950" />
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/95 via-slate-950/80 to-slate-950" />
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-slate-950 to-transparent" />
       </div>
 
@@ -48,6 +48,21 @@ export default function Hero() {
         >
           <span className="flex h-2 w-2 rounded-full bg-white animate-pulse" />
           <span>خدمة صيانة السيارات المتنقلة الفورية في الرياض - متوفرون الآن</span>
+        </motion.div>
+
+        {/* Standalone Banner Image for Mobile - 100% within phone bounds and beautifully visible */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="w-full max-w-md mx-auto mb-8 rounded-2xl overflow-hidden border border-slate-800 bg-slate-900/50 p-1 shadow-2xl md:hidden"
+        >
+          <img
+            src="https://i.postimg.cc/9QFcwzyQ/wrsht-mtnqlt-lsyant-alsyarat-balryad.png"
+            alt="ورشة متنقلة لصيانة السيارات بالرياض"
+            className="w-full h-auto rounded-xl object-contain"
+            referrerPolicy="no-referrer"
+          />
         </motion.div>
 
         {/* Main Headings */}
