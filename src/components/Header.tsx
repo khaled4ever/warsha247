@@ -47,16 +47,67 @@ export default function Header() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-6">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={(e) => handleScroll(e, link.href)}
-              className="text-sm font-medium text-slate-200 transition-colors hover:text-orange-500"
-            >
-              {link.name}
-            </a>
-          ))}
+          {navLinks.map((link) => {
+            if (link.href === "#services") {
+              return (
+                <div key={link.href} className="relative group py-2">
+                  <a
+                    href={link.href}
+                    onClick={(e) => handleScroll(e, link.href)}
+                    className="text-sm font-medium text-slate-200 transition-colors hover:text-orange-500 flex items-center gap-1 cursor-pointer"
+                  >
+                    <span>{link.name}</span>
+                    <span className="text-[10px] opacity-60">▼</span>
+                  </a>
+                  {/* Dropdown Menu */}
+                  <div className="absolute right-0 top-full mt-1 hidden group-hover:block w-56 rounded-2xl border border-slate-800 bg-slate-900 p-2 shadow-xl animate-in fade-in slide-in-from-top-2 duration-200">
+                    <a
+                      href="#computer"
+                      onClick={(e) => handleScroll(e, "#computer")}
+                      className="flex items-center gap-2 rounded-xl px-3 py-2 text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-orange-500 transition-all cursor-pointer"
+                    >
+                      <span className="text-orange-500 font-mono">#</span>
+                      <span>فحص وبرمجة كمبيوتر</span>
+                    </a>
+                    <a
+                      href="#mechanics"
+                      onClick={(e) => handleScroll(e, "#mechanics")}
+                      className="flex items-center gap-2 rounded-xl px-3 py-2 text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-orange-500 transition-all cursor-pointer"
+                    >
+                      <span className="text-orange-500 font-mono">#</span>
+                      <span>ميكانيكا متنقلة</span>
+                    </a>
+                    <a
+                      href="#electrical"
+                      onClick={(e) => handleScroll(e, "#electrical")}
+                      className="flex items-center gap-2 rounded-xl px-3 py-2 text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-orange-500 transition-all cursor-pointer"
+                    >
+                      <span className="text-orange-500 font-mono">#</span>
+                      <span>كهرباء وتكييف السيارات</span>
+                    </a>
+                    <a
+                      href="#battery"
+                      onClick={(e) => handleScroll(e, "#battery")}
+                      className="flex items-center gap-2 rounded-xl px-3 py-2 text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-orange-500 transition-all cursor-pointer"
+                    >
+                      <span className="text-orange-500 font-mono">#</span>
+                      <span>بطاريات مع الضمان</span>
+                    </a>
+                  </div>
+                </div>
+              );
+            }
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={(e) => handleScroll(e, link.href)}
+                className="text-sm font-medium text-slate-200 transition-colors hover:text-orange-500"
+              >
+                {link.name}
+              </a>
+            );
+          })}
         </nav>
 
         {/* Action Buttons */}
@@ -101,16 +152,52 @@ export default function Header() {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden border-t border-slate-800 bg-slate-900 px-4 pt-2 pb-4 space-y-1 shadow-lg" dir="rtl">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={(e) => handleScroll(e, link.href)}
-              className="block rounded-xl px-4 py-2.5 text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-orange-500 transition-colors"
-            >
-              {link.name}
-            </a>
-          ))}
+          {navLinks.map((link) => {
+            const isServices = link.href === "#services";
+            return (
+              <React.Fragment key={link.href}>
+                <a
+                  href={link.href}
+                  onClick={(e) => handleScroll(e, link.href)}
+                  className="block rounded-xl px-4 py-2.5 text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-orange-500 transition-colors"
+                >
+                  {link.name}
+                </a>
+                {isServices && (
+                  <div className="mr-6 my-1 space-y-1 border-r-2 border-slate-700 pr-4">
+                    <a
+                      href="#computer"
+                      onClick={(e) => handleScroll(e, "#computer")}
+                      className="block py-1.5 text-sm text-slate-400 hover:text-orange-500 transition-colors"
+                    >
+                      # فحص وبرمجة كمبيوتر
+                    </a>
+                    <a
+                      href="#mechanics"
+                      onClick={(e) => handleScroll(e, "#mechanics")}
+                      className="block py-1.5 text-sm text-slate-400 hover:text-orange-500 transition-colors"
+                    >
+                      # ميكانيكا متنقلة
+                    </a>
+                    <a
+                      href="#electrical"
+                      onClick={(e) => handleScroll(e, "#electrical")}
+                      className="block py-1.5 text-sm text-slate-400 hover:text-orange-500 transition-colors"
+                    >
+                      # كهرباء وتكييف
+                    </a>
+                    <a
+                      href="#battery"
+                      onClick={(e) => handleScroll(e, "#battery")}
+                      className="block py-1.5 text-sm text-slate-400 hover:text-orange-500 transition-colors"
+                    >
+                      # بطاريات مع الضمان
+                    </a>
+                  </div>
+                )}
+              </React.Fragment>
+            );
+          })}
           <div className="pt-4 grid grid-cols-2 gap-3 border-t border-slate-800">
             <a
               href={`tel:${CONTACT_PHONE}`}

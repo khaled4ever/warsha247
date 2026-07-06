@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Services from "./components/Services";
@@ -13,8 +14,25 @@ import FAQ from "./components/FAQ";
 import ContactForm from "./components/ContactForm";
 import FloatingActions from "./components/FloatingActions";
 import Footer from "./components/Footer";
+import PolicyModals from "./components/PolicyModals";
 
 export default function App() {
+  const [policyType, setPolicyType] = useState<"privacy" | "terms" | "disclaimer" | null>(null);
+
+  useEffect(() => {
+    const handleOpenPolicy = (e: Event) => {
+      const customEvent = e as CustomEvent<{ type: "privacy" | "terms" | "disclaimer" }>;
+      if (customEvent.detail && customEvent.detail.type) {
+        setPolicyType(customEvent.detail.type);
+      }
+    };
+
+    window.addEventListener("open-policy", handleOpenPolicy);
+    return () => {
+      window.removeEventListener("open-policy", handleOpenPolicy);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans" dir="rtl">
       {/* Dynamic Header / Navigation */}
@@ -48,6 +66,13 @@ export default function App() {
 
       {/* Detailed footer with site map, info, disclaimers */}
       <Footer />
+
+      {/* Google Ads Compliance Modals */}
+      <PolicyModals
+        isOpen={policyType !== null}
+        type={policyType}
+        onClose={() => setPolicyType(null)}
+      />
     </div>
   );
 }

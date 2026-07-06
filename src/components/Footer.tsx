@@ -64,15 +64,37 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Services List */}
+        {/* Policies and Compliance column */}
         <div>
-          <h4 className="text-sm font-extrabold text-white mb-4 border-r-2 border-orange-500 pr-2">خدمات الورشة</h4>
-          <ul className="space-y-2 text-xs sm:text-sm">
-            <li>فحص السيارات بالكمبيوتر وكشف الأكواد</li>
-            <li>إصلاح مكابح وفحمات وميكانيكا السيارات</li>
-            <li>صيانة وإصلاح كهرباء وبواجي وسلف ومارش</li>
-            <li>تغيير بطاريات سيارات أصلية مع الضمان</li>
-            <li>تعبئة فريون تكييف السيارة وإصلاح التهريب</li>
+          <h4 className="text-sm font-extrabold text-white mb-4 border-r-2 border-orange-500 pr-2">السياسات والامتثال</h4>
+          <ul className="space-y-2.5 text-xs sm:text-sm">
+            <li>
+              <button
+                onClick={() => window.dispatchEvent(new CustomEvent("open-policy", { detail: { type: "privacy" } }))}
+                className="text-slate-400 hover:text-orange-500 transition-colors text-right w-full cursor-pointer"
+              >
+                سياسة الخصوصية
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => window.dispatchEvent(new CustomEvent("open-policy", { detail: { type: "terms" } }))}
+                className="text-slate-400 hover:text-orange-500 transition-colors text-right w-full cursor-pointer"
+              >
+                الشروط والأحكام
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => window.dispatchEvent(new CustomEvent("open-policy", { detail: { type: "disclaimer" } }))}
+                className="text-slate-400 hover:text-orange-500 transition-colors text-right w-full cursor-pointer"
+              >
+                إخلاء المسؤولية القانونية
+              </button>
+            </li>
+            <li className="pt-2 text-[11px] text-slate-500 leading-relaxed border-t border-slate-800">
+              موقعنا متوافق بالكامل مع سياسات إعلانات جوجل لحماية المستهلك وبيانات المستخدم الشخصية لعام 2026.
+            </li>
           </ul>
         </div>
 
@@ -111,14 +133,46 @@ export default function Footer() {
 
       </div>
 
-      {/* Copyright Bar */}
-      <div className="max-w-7xl mx-auto border-t border-slate-800 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-        <p className="text-center sm:text-right">
-          © 2026 ورشة الرياض المتنقلة لصيانة وإصلاح السيارات. جميع الحقوق محفوظة.
-        </p>
-        <p className="text-center sm:text-left text-slate-500">
-          تم التصميم والتطوير بأعلى معايير الدقة والمهنية لخدمة قائدي المركبات بالرياض.
-        </p>
+      {/* Google Ads Compliance & Independent Disclaimer Banner */}
+      <div className="max-w-7xl mx-auto border-t border-slate-850 mt-12 pt-8 text-[11px] sm:text-xs text-slate-500 space-y-4">
+        <div className="bg-slate-950/40 border border-slate-850/50 p-4 rounded-2xl space-y-2 leading-relaxed">
+          <p className="font-bold text-slate-400">توضيح وإخلاء مسؤولية رسمي (جوجل إعلانات):</p>
+          <p>
+            موقع "ورشة الرياض المتنقلة" هو موقع إلكتروني تعريفي ترويجي مستقل يقدم خدمات فحص وصيانة وإصلاح السيارات المتنقلة في مدينة الرياض، المملكة العربية السعودية. ونود التوضيح بشكل صريح وحاسم بأننا <strong>لسنا وكلاء معتمدين رسمياً</strong>، ولسنا تابعين أو ممثلين أو مرتبطين بأي شكل من الأشكال بأي من الشركات المصنعة للسيارات (مثل تويوتا، نيسان، فورد، مرسيدس، بي إم دبليو، هيونداي أو غيرهم) أو وكلائهم المحليين في المملكة. جميع العلامات والشعارات وأسماء الموديلات المستخدمة في هذا الموقع تظهر فقط كدليل إرشادي لتوضيح مدى توافق خدماتنا الفنية وصلاحيتنا لإصلاح هذه الأنواع من السيارات.
+          </p>
+          <p>
+            <strong>بيان أمن وسرية البيانات:</strong> عند تعبئة نموذج حجز الخدمة أو طلب الاتصال، نؤكد لكم بأن بياناتكم الشخصية (الاسم، الهاتف، الحي، ونوع الخدمة) تُعامل بسرية تامة وأمان كامل. يتم استخدامها حصرياً بواسطة الفنيين المختصين التابعين لنا للتنسيق معكم وتأمين وصول الخدمة إلى موقعكم بالرياض، ونلتزم التزاماً كاملاً بعدم مشاركتها أو بيعها لأي جهة خارجية أو استخدامها في أغراض ترويجية غير مصرح بها من قبلكم.
+          </p>
+        </div>
+
+        {/* Copyright & Quick Links Bar */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-2 border-t border-slate-850/30">
+          <p className="text-center md:text-right text-slate-450">
+            © 2026 ورشة الرياض المتنقلة لصيانة وإصلاح السيارات. جميع الحقوق محفوظة.
+          </p>
+          <div className="flex flex-wrap justify-center gap-3 md:gap-4 font-medium text-slate-400">
+            <button
+              onClick={() => window.dispatchEvent(new CustomEvent("open-policy", { detail: { type: "privacy" } }))}
+              className="hover:text-orange-500 transition-colors cursor-pointer"
+            >
+              سياسة الخصوصية
+            </button>
+            <span className="text-slate-700">•</span>
+            <button
+              onClick={() => window.dispatchEvent(new CustomEvent("open-policy", { detail: { type: "terms" } }))}
+              className="hover:text-orange-500 transition-colors cursor-pointer"
+            >
+              الشروط والأحكام
+            </button>
+            <span className="text-slate-700">•</span>
+            <button
+              onClick={() => window.dispatchEvent(new CustomEvent("open-policy", { detail: { type: "disclaimer" } }))}
+              className="hover:text-orange-500 transition-colors cursor-pointer"
+            >
+              إخلاء المسؤولية
+            </button>
+          </div>
+        </div>
       </div>
     </footer>
   );

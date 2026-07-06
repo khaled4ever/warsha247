@@ -207,6 +207,32 @@ export default function ContactForm() {
                     <span>تواصل هاتفي مباشر (24 ساعة)</span>
                   </a>
                 </div>
+
+                {/* Google Ads Compliance Privacy Consent Notice */}
+                <div className="mt-4 pt-3 border-t border-slate-100 text-[11px] sm:text-xs text-slate-500 leading-relaxed space-y-1">
+                  <p>
+                    * عند إرسالك هذا النموذج، فإنك تمنح موافقتك الصريحة لورشة الرياض المتنقلة للتواصل معك هاتفياً أو عبر تطبيق WhatsApp بخصوص صيانة سيارتك وإرسال أقرب فني إليك بالحي المحدد.
+                  </p>
+                  <p>
+                    * نلتزم التزاماً كاملاً بحماية بياناتك وسريتها ولا نشاركها إطلاقاً مع أطراف ثالثة. يمكنك مراجعة{" "}
+                    <button
+                      type="button"
+                      onClick={() => window.dispatchEvent(new CustomEvent("open-policy", { detail: { type: "privacy" } }))}
+                      className="text-orange-500 underline hover:text-orange-600 font-bold bg-transparent border-0 p-0 inline cursor-pointer"
+                    >
+                      سياسة الخصوصية
+                    </button>{" "}
+                    و{" "}
+                    <button
+                      type="button"
+                      onClick={() => window.dispatchEvent(new CustomEvent("open-policy", { detail: { type: "terms" } }))}
+                      className="text-orange-500 underline hover:text-orange-600 font-bold bg-transparent border-0 p-0 inline cursor-pointer"
+                    >
+                      شروط وأحكام الخدمة
+                    </button>{" "}
+                    الخاصة بنا في أي وقت.
+                  </p>
+                </div>
               </motion.form>
             ) : (
               <motion.div

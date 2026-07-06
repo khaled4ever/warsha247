@@ -43,6 +43,32 @@ export default function Services() {
           </p>
         </div>
 
+        {/* Quick Anchor Navigation Links */}
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-12 max-w-4xl mx-auto px-2">
+          {servicesData.map((service) => {
+            const IconComponent = iconMap[service.iconName];
+            return (
+              <a
+                key={service.id}
+                href={`#${service.id}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  const el = document.getElementById(service.id);
+                  if (el) {
+                    el.scrollIntoView({ behavior: "smooth", block: "start" });
+                    window.history.pushState(null, "", `#${service.id}`);
+                  }
+                }}
+                className="inline-flex items-center gap-2 rounded-2xl bg-white hover:bg-orange-50 border border-slate-200 hover:border-orange-500/30 px-3.5 py-2.5 text-xs sm:text-sm font-bold text-slate-700 hover:text-orange-600 transition-all duration-200 shadow-sm hover:shadow active:scale-95 cursor-pointer"
+              >
+                <IconComponent className="h-4 w-4 text-orange-500" />
+                <span>{service.title.split(" ")[0] + " " + (service.title.split(" ")[1] || "")}</span>
+                <span className="text-slate-350 text-[10px] font-normal font-mono">#</span>
+              </a>
+            );
+          })}
+        </div>
+
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {servicesData.map((service) => {
@@ -50,12 +76,32 @@ export default function Services() {
             return (
               <div
                 key={service.id}
-                className="group relative flex flex-col justify-between rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 hover:border-orange-500/30 hover:shadow-xl transition-all duration-300 shadow-sm"
+                id={service.id}
+                className="group relative flex flex-col justify-between rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 hover:border-orange-500/30 hover:shadow-xl transition-all duration-300 shadow-sm scroll-mt-28"
               >
                 <div>
-                  {/* Icon Container */}
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-100 border border-slate-200 text-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-all duration-300 shadow-sm">
-                    <IconComponent className="h-6 w-6" />
+                  {/* Icon Container and Direct Link */}
+                  <div className="flex items-center justify-between">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-100 border border-slate-200 text-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-all duration-300 shadow-sm">
+                      <IconComponent className="h-6 w-6" />
+                    </div>
+                    
+                    {/* Anchor Indicator */}
+                    <a
+                      href={`#${service.id}`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        const el = document.getElementById(service.id);
+                        if (el) {
+                          el.scrollIntoView({ behavior: "smooth", block: "start" });
+                          window.history.pushState(null, "", `#${service.id}`);
+                        }
+                      }}
+                      className="text-slate-300 hover:text-orange-500 font-mono font-bold text-sm bg-slate-50 border border-slate-100 hover:border-orange-100 px-2 py-1 rounded-lg transition-all cursor-pointer"
+                      title="رابط سريع ومباشر لهذه الخدمة"
+                    >
+                      <span>#{service.id}</span>
+                    </a>
                   </div>
 
                   {/* Title & Description */}
