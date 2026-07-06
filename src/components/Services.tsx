@@ -18,9 +18,14 @@ const iconMap = {
 export default function Services() {
   const [selectedService, setSelectedService] = useState<Service | null>(null);
 
-  const handleBooking = (serviceTitle: string) => {
-    const text = encodeURIComponent(`السلام عليكم، أحتاج خدمة: [${serviceTitle}] لسيارتي بالرياض. أرجو التواصل معي.`);
-    window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${text}`, "_blank");
+  const handleInternalBooking = (serviceId: string) => {
+    const event = new CustomEvent("select-service", { detail: { serviceId } });
+    window.dispatchEvent(event);
+    
+    const element = document.getElementById("contact");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
@@ -73,24 +78,37 @@ export default function Services() {
                 </div>
 
                 {/* Bottom Card Area */}
-                <div className="mt-8 pt-6 border-t border-slate-100 flex gap-3">
+                <div className="mt-8 pt-6 border-t border-slate-100 flex flex-col gap-3">
                   <a
-                    href={`tel:${CONTACT_PHONE}`}
-                    className="flex-1 flex items-center justify-center gap-1.5 rounded-xl bg-orange-500 hover:bg-orange-400 px-3 py-2.5 text-xs font-black text-white shadow-md transition-all duration-300 active:scale-95 cursor-pointer"
+                    href="#contact"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleInternalBooking(service.id);
+                    }}
+                    className="w-full flex items-center justify-center gap-1.5 rounded-xl bg-orange-500 hover:bg-orange-400 py-3 text-xs font-black text-white shadow-md transition-all duration-300 active:scale-95 cursor-pointer"
                   >
-                    <Phone className="h-3.5 w-3.5 shrink-0" />
-                    <span>اتصل الآن</span>
+                    <span>طلب حجز الخدمة فوري</span>
                   </a>
                   
-                  <a
-                    href={`https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(`السلام عليكم، أحتاج خدمة: [${service.title}] لسيارتي بالرياض. أرجو التواصل معي.`)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 px-3 py-2.5 text-xs font-black text-white shadow-md transition-all duration-300 active:scale-95 cursor-pointer"
-                  >
-                    <MessageSquare className="h-3.5 w-3.5 shrink-0 text-emerald-100" />
-                    <span>واتساب</span>
-                  </a>
+                  <div className="flex gap-2.5">
+                    <a
+                      href={`tel:${CONTACT_PHONE}`}
+                      className="flex-1 flex items-center justify-center gap-1.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 py-2.5 text-xs font-bold text-slate-700 transition-all duration-300 active:scale-95 cursor-pointer"
+                    >
+                      <Phone className="h-3.5 w-3.5 shrink-0 text-orange-500" />
+                      <span>اتصال فوري</span>
+                    </a>
+                    
+                    <a
+                      href={`https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(`السلام عليكم، أحتاج خدمة: [${service.title}] لسيارتي بالرياض. أرجو التواصل معي.`)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 flex items-center justify-center gap-1.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 py-2.5 text-xs font-bold text-slate-700 transition-all duration-300 active:scale-95 cursor-pointer"
+                    >
+                      <MessageSquare className="h-3.5 w-3.5 shrink-0 text-emerald-500" />
+                      <span>واتساب</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             );

@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Phone, MessageSquare, Check, Calendar, MapPin, Car, HelpCircle, User } from "lucide-react";
 import { CONTACT_PHONE, WHATSAPP_PHONE } from "../data";
@@ -18,6 +18,30 @@ export default function ContactForm() {
     notes: ""
   });
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    const handleServiceSelect = (e: Event) => {
+      const customEvent = e as CustomEvent<{ serviceId: string }>;
+      if (customEvent.detail && customEvent.detail.serviceId) {
+        const id = customEvent.detail.serviceId;
+        let mappedType = "ميكانيكا عامة";
+        if (id === "computer") mappedType = "فحص كمبيوتر وبرمجة";
+        else if (id === "mechanics") mappedType = "ميكانيكا عامة";
+        else if (id === "electrical") mappedType = "كهرباء وتكييف";
+        else if (id === "battery") mappedType = "تغيير بطارية أصلية";
+        
+        setFormData(prev => ({
+          ...prev,
+          serviceType: mappedType
+        }));
+      }
+    };
+
+    window.addEventListener("select-service", handleServiceSelect);
+    return () => {
+      window.removeEventListener("select-service", handleServiceSelect);
+    };
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

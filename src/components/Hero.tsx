@@ -29,7 +29,7 @@ export default function Hero() {
       {/* Background Image with Dark Overlays */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/src/assets/images/riyadh_mobile_mechanic_1783333183987.jpg"
+          src="https://i.postimg.cc/9QFcwzyQ/wrsht-mtnqlt-lsyant-alsyarat-balryad.png"
           alt="ورشة متنقلة في الرياض"
           className="w-full h-full object-cover object-center"
           referrerPolicy="no-referrer"
