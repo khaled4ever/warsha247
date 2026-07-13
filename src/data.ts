@@ -5,8 +5,8 @@
 
 import { Service, Symptom, Neighborhood, Testimonial, FAQ } from './types';
 
-export const CONTACT_PHONE = "+966554307219"; // Riyadh Mobile Workshop direct line
-export const WHATSAPP_PHONE = "966554307219"; // WhatsApp business API formatted
+export const CONTACT_PHONE = "+966530348699"; // Riyadh Mobile Workshop direct line
+export const WHATSAPP_PHONE = "966530348699"; // WhatsApp business API formatted
 
 export const servicesData: Service[] = [
   {
