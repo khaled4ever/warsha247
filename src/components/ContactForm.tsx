@@ -43,12 +43,27 @@ export default function ContactForm() {
     };
   }, []);
 
+  const triggerConversion = () => {
+    if (typeof window !== "undefined" && (window as any).gtag) {
+      try {
+        (window as any).gtag('event', 'conversion', {
+          'send_to': 'AW-18320528311/MIcgCNutk9AcELen9J9E',
+          'transaction_id': ''
+        });
+        console.log("Google Ads Conversion event sent successfully.");
+      } catch (err) {
+        console.error("Error sending Google Ads conversion event:", err);
+      }
+    }
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.phone || !formData.neighborhood) return;
     
     // Simulate API registration / validation success
     setSubmitted(true);
+    triggerConversion();
   };
 
   const getWhatsAppMessage = () => {
