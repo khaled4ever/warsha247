@@ -69,28 +69,40 @@ export default function Footer() {
           <h4 className="text-sm font-extrabold text-white mb-4 border-r-2 border-orange-500 pr-2">السياسات والامتثال</h4>
           <ul className="space-y-2.5 text-xs sm:text-sm">
             <li>
-              <button
-                onClick={() => window.dispatchEvent(new CustomEvent("open-policy", { detail: { type: "privacy" } }))}
-                className="text-slate-400 hover:text-orange-500 transition-colors text-right w-full cursor-pointer"
+              <a
+                href="#privacy"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.dispatchEvent(new CustomEvent("open-policy", { detail: { type: "privacy" } }));
+                }}
+                className="text-slate-400 hover:text-orange-500 transition-colors text-right block w-full cursor-pointer"
               >
                 سياسة الخصوصية
-              </button>
+              </a>
             </li>
             <li>
-              <button
-                onClick={() => window.dispatchEvent(new CustomEvent("open-policy", { detail: { type: "terms" } }))}
-                className="text-slate-400 hover:text-orange-500 transition-colors text-right w-full cursor-pointer"
+              <a
+                href="#terms"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.dispatchEvent(new CustomEvent("open-policy", { detail: { type: "terms" } }));
+                }}
+                className="text-slate-400 hover:text-orange-500 transition-colors text-right block w-full cursor-pointer"
               >
                 الشروط والأحكام
-              </button>
+              </a>
             </li>
             <li>
-              <button
-                onClick={() => window.dispatchEvent(new CustomEvent("open-policy", { detail: { type: "disclaimer" } }))}
-                className="text-slate-400 hover:text-orange-500 transition-colors text-right w-full cursor-pointer"
+              <a
+                href="#disclaimer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.dispatchEvent(new CustomEvent("open-policy", { detail: { type: "disclaimer" } }));
+                }}
+                className="text-slate-400 hover:text-orange-500 transition-colors text-right block w-full cursor-pointer"
               >
                 إخلاء المسؤولية القانونية
-              </button>
+              </a>
             </li>
             <li className="pt-2 text-[11px] text-slate-500 leading-relaxed border-t border-slate-800">
               موقعنا متوافق بالكامل مع سياسات إعلانات جوجل لحماية المستهلك وبيانات المستخدم الشخصية لعام 2026.
@@ -151,26 +163,38 @@ export default function Footer() {
             © 2026 ورشة الرياض المتنقلة لصيانة وإصلاح السيارات. جميع الحقوق محفوظة.
           </p>
           <div className="flex flex-wrap justify-center gap-3 md:gap-4 font-medium text-slate-400">
-            <button
-              onClick={() => window.dispatchEvent(new CustomEvent("open-policy", { detail: { type: "privacy" } }))}
+            <a
+              href="#privacy"
+              onClick={(e) => {
+                e.preventDefault();
+                window.dispatchEvent(new CustomEvent("open-policy", { detail: { type: "privacy" } }));
+              }}
               className="hover:text-orange-500 transition-colors cursor-pointer"
             >
               سياسة الخصوصية
-            </button>
+            </a>
             <span className="text-slate-700">•</span>
-            <button
-              onClick={() => window.dispatchEvent(new CustomEvent("open-policy", { detail: { type: "terms" } }))}
+            <a
+              href="#terms"
+              onClick={(e) => {
+                e.preventDefault();
+                window.dispatchEvent(new CustomEvent("open-policy", { detail: { type: "terms" } }));
+              }}
               className="hover:text-orange-500 transition-colors cursor-pointer"
             >
               الشروط والأحكام
-            </button>
+            </a>
             <span className="text-slate-700">•</span>
-            <button
-              onClick={() => window.dispatchEvent(new CustomEvent("open-policy", { detail: { type: "disclaimer" } }))}
+            <a
+              href="#disclaimer"
+              onClick={(e) => {
+                e.preventDefault();
+                window.dispatchEvent(new CustomEvent("open-policy", { detail: { type: "disclaimer" } }));
+              }}
               className="hover:text-orange-500 transition-colors cursor-pointer"
             >
               إخلاء المسؤولية
-            </button>
+            </a>
           </div>
         </div>
       </div>

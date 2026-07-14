@@ -209,27 +209,36 @@ export default function ContactForm() {
                 </div>
 
                 {/* Google Ads Compliance Privacy Consent Notice */}
-                <div className="mt-4 pt-3 border-t border-slate-100 text-[11px] sm:text-xs text-slate-500 leading-relaxed space-y-1">
+                <div className="mt-4 pt-3 border-t border-slate-100 text-[11px] sm:text-xs text-slate-500 leading-relaxed space-y-1.5">
                   <p>
                     * عند إرسالك هذا النموذج، فإنك تمنح موافقتك الصريحة لورشة الرياض المتنقلة للتواصل معك هاتفياً أو عبر تطبيق WhatsApp بخصوص صيانة سيارتك وإرسال أقرب فني إليك بالحي المحدد.
                   </p>
                   <p>
+                    * <strong>شفافية الأسعار وجودة الخدمة:</strong> يتم الاتفاق على تكلفة الانتقال والفحص المبدئي بشكل كامل ومسبق قبل انطلاق الفني. كما يتم تزويدك بتقدير واضح لأجور اليد وأسعار قطع الغيار الأصلية قبل البدء بأي عمل إصلاحي، دون أي تكاليف أو رسوم مخفية نهائياً.
+                  </p>
+                  <p>
                     * نلتزم التزاماً كاملاً بحماية بياناتك وسريتها ولا نشاركها إطلاقاً مع أطراف ثالثة. يمكنك مراجعة{" "}
-                    <button
-                      type="button"
-                      onClick={() => window.dispatchEvent(new CustomEvent("open-policy", { detail: { type: "privacy" } }))}
+                    <a
+                      href="#privacy"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        window.dispatchEvent(new CustomEvent("open-policy", { detail: { type: "privacy" } }));
+                      }}
                       className="text-orange-500 underline hover:text-orange-600 font-bold bg-transparent border-0 p-0 inline cursor-pointer"
                     >
                       سياسة الخصوصية
-                    </button>{" "}
+                    </a>{" "}
                     و{" "}
-                    <button
-                      type="button"
-                      onClick={() => window.dispatchEvent(new CustomEvent("open-policy", { detail: { type: "terms" } }))}
+                    <a
+                      href="#terms"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        window.dispatchEvent(new CustomEvent("open-policy", { detail: { type: "terms" } }));
+                      }}
                       className="text-orange-500 underline hover:text-orange-600 font-bold bg-transparent border-0 p-0 inline cursor-pointer"
                     >
                       شروط وأحكام الخدمة
-                    </button>{" "}
+                    </a>{" "}
                     الخاصة بنا في أي وقت.
                   </p>
                 </div>

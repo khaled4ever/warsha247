@@ -119,6 +119,18 @@ export default function Hero() {
           </button>
         </motion.div>
 
+        {/* Google Ads Compliance Independent Provider Disclaimer Banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="w-full max-w-4xl mt-10 p-4 rounded-2xl border border-slate-800/80 bg-slate-950/60 backdrop-blur-sm text-center"
+        >
+          <p className="text-[11px] sm:text-xs text-slate-450 leading-relaxed">
+            <span className="font-extrabold text-orange-500">تنبيه قانوني هام:</span> نحن <span className="text-white font-semibold">ورشة صيانة سيارات متنقلة مستقلة تماماً</span> في مدينة الرياض. نحن <span className="text-white underline decoration-orange-500/40">لسنا وكلاء معتمدين رسمياً</span> لأي علامة تجارية للسيارات، ولا نمثل أي وكيل محلي بالمملكة. جميع الخدمات الفنية والصيانات تقدم لعملاء الورشة بشكل مستقل لجميع الموديلات والأنواع بمهنية عالية وأمان كامل وضمان معتمد.
+          </p>
+        </motion.div>
+
         {/* Key Features Grid */}
         <motion.div
           initial={{ opacity: 0 }}
